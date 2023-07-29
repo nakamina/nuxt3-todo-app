@@ -1,4 +1,6 @@
-# TODO管理アプリ
+# TODO 管理アプリ
+[![](https://therealsujitk-vercel-badge.vercel.app/?app=nuxt3-todo-app-alpha.vercel.app)](https://nuxt3-todo-app-alpha.vercel.app/)
+
 Nuxt3 をフレームワークとして用いたタスク追加とタスクの削除ができるTODO管理アプリ
 
 ## node.js 環境の構築
