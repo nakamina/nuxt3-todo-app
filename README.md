@@ -22,7 +22,7 @@ nodebrew ls
 - nodebrewでインストールしたnodeにPATHを通しておく
 ```shell
 echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zshrc
-sorce ~/.zshrc
+source ~/.zshrc
 ```
 - yarnをインストール
 ```shell
