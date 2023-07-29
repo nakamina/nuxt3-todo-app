@@ -1,63 +1,47 @@
-# Nuxt 3 based ToDo app.
+# TODO管理アプリ
+Nuxt3をフレームワークとして用いたタスク追加とタスクの削除ができるTODO管理アプリ
+# 環境構築
+- nodebrewのインストール
+```shell
+brew install nodebrew
+```
+- nodebrewを使ってnodeをインストール
+```shell
+#保存先のディレクトリを作成する
+mkdir -p ~/.nodebrew/src
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+#nodeをインストールする
+nodebrew install-binary stable
 
-## Setup
+#インストールしたnodeのバージョンを確認する
+nodebrew ls
+# v20.4.0
 
-Make sure to install the dependencies:
+# current: v20.4.0
+```
+- nodebrewでインストールしたnodeにPATHを通しておく
+```shell
+echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zshrc
+sorce ~/.zshrc
+```
+- yarnをインストール
+```shell
+npm install -g yarn
+```
+- nuxtプロジェクトを作成
+```shell
+cd /path/to/workdir
 
-```bash
-# npm
-npm install
+npx nuxi@latest init nuxt3-todo-app
 
-# pnpm
-pnpm install
-
-# yarn
+cd nuxt3-todo-app
+```
+- 依存モジュールをインストール
+```shell
 yarn install
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
+- 開発サーバを立ち上げる
+```shell
+yarn dev -o
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
