@@ -7,13 +7,13 @@ brew install nodebrew
 ```
 - nodebrewを使ってnodeをインストール
 ```shell
-#保存先のディレクトリを作成する
+# 保存先のディレクトリを作成する
 mkdir -p ~/.nodebrew/src
 
-#nodeをインストールする
+# nodeをインストールする
 nodebrew install-binary stable
 
-#インストールしたnodeのバージョンを確認する
+# インストールしたnodeのバージョンを確認する
 nodebrew ls
 # v20.4.0
 
