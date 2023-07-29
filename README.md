@@ -16,7 +16,7 @@ nodebrew install-binary stable
 # インストールしたnodeのバージョンを確認する
 nodebrew ls
 # v20.4.0
-
+#
 # current: v20.4.0
 ```
 - nodebrewでインストールしたnodeにPATHを通しておく
