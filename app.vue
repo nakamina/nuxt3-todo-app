@@ -1,26 +1,51 @@
-<template>
-  <div>
-    <h1>ToDoApp</h1>
-    <h2>タスク追加</h2>
-    <input v-model="taskName"><button @click="addTask()">追加</button>
-    <h2>タスク名</h2>
-    <div v-for="taskName in taskNameList" :key="taskName">
-      {{ taskName }}<button @click="completeTask(taskName)">完了</button>
-    </div>
-  </div>
-</template>
+<script setup>
+import { computed, ref } from 'vue';
 
-<script setup lang="ts">
-const taskNameList = ref<string[]>(['やることリスト1', 'やることリスト2', 'やることリスト3']);
-const taskName = ref<string>('');
-const addTask = () => {
-  if (taskName.value === '') {
-    return;
-  }
-  taskNameList.value.push(taskName.value);
-  taskName.value = '';
+let id = 0
+
+const newTodo = ref('')
+const hideCompleted = ref(false)
+const todos = ref([
+  { id: id++, text: 'タスク 1 ', done: false },
+  { id: id++, text: 'タスク 2 ', done: true },
+  { id: id++, text: 'タスク 3 ', done: false }
+])
+
+const filteredTodos = computed(() => {
+  return hideCompleted.value
+    ? todos.value.filter((t) => !t.done)
+    : todos.value
+})
+
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value, done: false })
+  newTodo.value = ''
 }
-const completeTask = (completedTaskName: string) => {
-  taskNameList.value = taskNameList.value.filter((taskName) => completedTaskName !== taskName);
+
+function removeTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo)
 }
 </script>
+
+<template>
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo">
+    <button>新規タスクを作成</button>
+  </form>
+  <ul>
+    <li v-for="todo in filteredTodos" :key="todo.id">
+      <input type="checkbox" v-model="todo.done">
+      <span :class="{ done: todo.done }">{{ todo.text }}</span>
+      <button @click="removeTodo(todo)">削除</button>
+    </li>
+  </ul>
+  <button @click="hideCompleted = !hideCompleted">
+    {{ hideCompleted ? '全てのタスクを確認' : '終わったタスクを隠す' }}
+  </button>
+</template>
+
+<style>
+.done {
+  text-decoration: line-through;
+}
+</style>
