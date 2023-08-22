@@ -26,7 +26,7 @@
 // 単一コンポーネントでTypeScriptを使用時は、scriptタグにlang="ts"属性を追加。全てのテンプレート内の式に対して型チェックを利用できる
 //
 
-// defineComponentをvueから、　useTodoStoreを'@/store/todoからインポートしている
+// defineComponentをvueから、useTodoStoreを'@/store/todoからインポートしている
 import { useTodoStore } from '@/store/todo'
 import { defineComponent } from 'vue'
 
