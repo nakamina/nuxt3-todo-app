@@ -11,10 +11,12 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.16.19",
+    "@types/uuid": "^9.0.2",
     "nuxt": "^3.6.3"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@pinia/nuxt": "^0.4.11"
+    "@pinia/nuxt": "^0.4.11",
+    "uuid": "^9.0.0"
   }
 }

@@ -1,15 +1,16 @@
 // Todoを管理するストアを作成
 import { defineStore } from "pinia";
+import { v4 as uuidv4 } from 'uuid';
 
 // interface = インスタンスのプロパティやメソッドの使用を定義する
 // 全てのプロパティに値を設定する必要がある
 // idは数字、　titleは文字列、　completed(完了したか)はture false
 export interface Todo {
-    id: number;
+    id: string;
     title: string;
     completed: boolean;
 }
-// Todos は　Todoの配列型か　undefined型をとる
+// Todos は　Todoの配列型をとる
 export type Todos = Todo[];
 
 // TodoAdd　は　titleとして文字列をとる
@@ -27,10 +28,11 @@ interface TodoState {
 }
 
 // 課題が完了した時(trueの時)にチェックボックスをつける
+//stateは初期状態
 const state = (): TodoState => ({
     items: [
         {
-            id: 1,
+            id: uuidv4(),
             title: 'Complete this project',
             completed: true
         }
@@ -51,7 +53,7 @@ export const useTodoStore = defineStore("todoStore", {
     actions: {
         // async でfunctionを同期処理にする(上から順番に実行する)
         async add(todo: TodoAdd) {
-            this.items.push({ id: Math.random(), ...todo });
+            this.items.push({ id: uuidv4(), ...todo });
         },
         async remove(id: number) {
             // filter : items配列の要素である文字列内にitemのid がidと一致しないものだけを抽出する
