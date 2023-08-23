@@ -39,6 +39,7 @@ export default defineComponent({
         const toggleComplete = () => {
             // updateメソッドで、要素の内容を書き換える
             // update(要素,更新する値)
+            // idに基づいてtodoの状態を完了状態に更新している
             todoStore.update(props.todo.id, { completed: !props.todo.completed })
         }
         const removeTodo = () => {

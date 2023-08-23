@@ -1,10 +1,11 @@
 <template>
     <div>
         <!-- # ボタンに関係づけられたフォーム -->
+        <!-- ボタンを押した時にsubmitされるようになっている -->
         <form @submit.prevent="addTodo()">
             <div class="shadow-sm">
                 <div>
-                    <!-- tailwindowのCSSを利用して、初期値としてEnter todo が表示される入力フォームを作成(input)  -->
+                    <!-- Tailwind CSSを利用して、初期値としてEnter todo が表示される入力フォームを作成(input)  -->
                     <input v-model="todoTitle" type="text" autocomplete="text" required
                         class="relative block w-full appearance-none rounded-t-md rounded-b-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                         placeholder="Enter todo">
@@ -35,12 +36,11 @@ export default defineComponent({
     // コンポーネントのテンプレート内でrefにアクセスするために、setup()関数で宣言し、それを返す
     // setup は Composition API専用の特別なフック
     setup() {
-        // todoStore は useTodoStore と定義
+        // 状態管理するuseTodoStoreに定義
         // ストアを定義してコンポーネントからストアを利用
-
         const todoStore = useTodoStore()
 
-        // todoTitle は　refがあるため、v-modelと同期
+        // todoTitle を入力するとrefの中に値が入る
         // refで定義した変数の値はvalueプロパティを用いてアクセスする
         // <template>への記述では、.valueは不要
         const todoTitle = ref('')
@@ -58,7 +58,7 @@ export default defineComponent({
             todoStore.add({
                 title: todoTitle.value
             })
-
+            // 入力した値がtodoStoreに格納されるため、入力フォームは空欄に戻る
             todoTitle.value = ''
         }
         // ref をテンプレート(HTML)に公開する

@@ -2,14 +2,15 @@
 import { defineStore } from "pinia";
 import { v4 as uuidv4 } from 'uuid';
 
-// interface = インスタンスのプロパティやメソッドの使用を定義する
-// 全てのプロパティに値を設定する必要がある
-// idは数字、　titleは文字列、　completed(完了したか)はture false
+// export で他のファイルから参照可能にしている
+// export interface で外部ファイルからそのインターフェースをインポートして利用可能
+// completed(完了したか)はture false
 export interface Todo {
     id: string;
     title: string;
     completed: boolean;
 }
+// export type で型情報だけを他のファイルから参照可能にしている
 // Todos は　Todoの配列型をとる
 export type Todos = Todo[];
 
@@ -20,7 +21,7 @@ export interface TodoAdd {
 // 必ずしも全てのプロパティが必須とは限らないため、任意のプロパティを表す時にはプロパティ名の末尾に?をつける
 // completed プロパティはオプショナル(省略できる)
 export interface TodoUpdate {
-    completed?: boolean;
+    completed: boolean;
 }
 // TodoStateは、Todos型を持つアイテムによって構成されたオブジェクト
 interface TodoState {
